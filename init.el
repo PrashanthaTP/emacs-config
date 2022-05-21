@@ -53,7 +53,7 @@
 ;; set scratch buffer mode to org
 ;; to test speeding up opening org files later
 (setq initial-major-mode 'org-mode)
-(setq org-startup-folded 'fold)
+(setq org-startup-folded t)
 (setq org-src-fontify-natively t)
 (custom-set-faces
  '(org-block-begin-line
