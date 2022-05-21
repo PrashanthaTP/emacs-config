@@ -64,16 +64,20 @@
 
 ;;https://zzamboni.org/post/beautifying-org-mode-in-emacs/
 (add-to-list 'load-path "~/.config/emacs/elisp/packages/org/org-bullets/")
+;; https://github.com/integral-dw/org-bullets#faq--troubleshooting
+(setq inhibit-compacting-font-caches t)
   (font-lock-add-keywords 'org-mode
 			  '(("^ *\\([-]\\) "
 			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
   ;; use org-bullets-mode for utf8 symbols as org bullets
   (require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
   ;; make available "org-bullet-face" such that I can control the font size individually
-  (setq org-bullets-face-name (quote org-bullet-face))
+ ;;(setq org-bullets-face-name (quote org-bullet-face))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "❍" "￮" "⊙" "⊚" "⊛" "∙" "∘"))
+;;
 ;; make available "org-bullet-face" such that I can control the font size individually
   ;;(setq org-bullets-face-name (quote org-bullet-face))
 
