@@ -50,6 +50,9 @@
 ;;(enable-theme 'solarized)
 ;;(add-to-list 'default-frame-alist '(background-mode dark))
 
+;; set scratch buffer mode to org
+;; to test speeding up opening org files later
+(setq initial-major-mode 'org-mode)
 (setq org-src-fontify-natively t)
 (custom-set-faces
  '(org-block-begin-line
@@ -59,6 +62,8 @@
  '(org-block-end-line
    ((t (:underline "#000000" :foreground "#555555" :background "#08080D" :extend t))))
  )
+;;https://stackoverflow.com/questions/11670654/how-to-resize-images-in-org-mode
+(setq org-image-actual-width nil)
 
 (global-set-key (kbd "C-c e") 'org-babel-tangle)
 
