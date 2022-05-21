@@ -11,6 +11,82 @@
 ;;(setq line-number-mode t)
 
 (global-linum-mode)
+;;https://stackoverflow.com/questions/69934/set-4-space-indent-in-emacs-in-text-mode
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+;;Fido mode setup
+;;http://xahlee.info/emacs/emacs/emacs_icomplete_mode.html
+(if (version< emacs-version "28.1")
+    (progn
+      (progn
+        ;; make buffer switch command do suggestions, also for find-file command
+        (require 'ido)
+        (ido-mode 1)
+        ;; show choices vertically
+        (setf (nth 2 ido-decorations) "\n")
+        ;; show any name that has the chars you typed
+        (setq ido-enable-flex-matching t)
+        ;; use current pane for newly opened file
+        (setq ido-default-file-method 'selected-window)
+        ;; use current pane for newly switched buffer
+        (setq ido-default-buffer-method 'selected-window)
+        )
+      (progn
+        ;; minibuffer enhanced completion icomplete
+        (require 'icomplete)
+        (icomplete-mode 1)
+        ;; show choices vertically
+        (setq icomplete-separator "\n")
+        (setq icomplete-hide-common-prefix nil)
+        (setq icomplete-in-buffer t)
+        (define-key icomplete-minibuffer-map (kbd "<right>") 'icomplete-forward-completions)
+        (define-key icomplete-minibuffer-map (kbd "<left>") 'icomplete-backward-completions)))
+  (fido-vertical-mode 1))
+
+;; Ido mode
+;; for emacs version below 28
+(progn
+  ;; make buffer switch command do suggestions, also for find-file command
+  (require 'ido)
+  (ido-mode 1)
+
+  ;; show choices vertically
+  (if (version< emacs-version "25")
+      (setq ido-separator "\n")
+    (setf (nth 2 ido-decorations) "\n"))
+
+  ;; show any name that has the chars you typed
+  (setq ido-enable-flex-matching t)
+
+  ;; use current pane for newly opened file
+  (setq ido-default-file-method 'selected-window)
+
+  ;; use current pane for newly switched buffer
+  (setq ido-default-buffer-method 'selected-window)
+)
+
+(progn
+  ;; make buffer switch command do suggestions, also for find-file command
+  (require 'ido)
+  (ido-mode 1)
+
+  ;; show choices vertically
+  (if (version< emacs-version "25")
+      (setq ido-separator "\n")
+    (setf (nth 2 ido-decorations) "\n"))
+
+  ;; show any name that has the chars you typed
+  (setq ido-enable-flex-matching t)
+
+  ;; use current pane for newly opened file
+  (setq ido-default-file-method 'selected-window)
+
+  ;; use current pane for newly switched buffer
+  (setq ido-default-buffer-method 'selected-window)
+  )
+;; big minibuffer height, for ido to show choices vertically
+(setq max-mini-window-height 0.5)
 
 ;;https://zhangda.wordpress.com/2016/02/15/configurations-for-beautifying-emacs-org-mode/
 ;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
@@ -178,3 +254,58 @@
 (global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "C-c t") 'org-babel-tangle)
+
+(defun my/template/elisp-fn ()
+  (interactive)
+  (insert "(defun  ()\n"
+          "\n"
+	  ")\n")
+  (forward-line -3)
+  (forward-char 7))
+(global-set-key (kbd "C-c i fn") 'my/template/elisp-fn)
+
+
+(defun my/template/kbd ()
+  (interactive)
+  (insert "(global-set-key (kbd \"\") ' )\n")
+  (forward-line -1)
+  (forward-char 22))
+(global-set-key (kbd "C-c i kbd") 'my/template/kbd)
+ 
+
+(defun my/template/tmp ()
+  (interactive)
+  (my/template/elisp-fn)
+  (insert "my/template/ ")
+  (forward-line 1)
+  (insert "(interactive)\n")
+  (insert "(insert )\n")
+  (forward-line -3)
+  (forward-char 19)
+) 
+(global-set-key (kbd "C-c i tmp") 'my/template/tmp )
+
+;;https://shallowsky.com/blog/linux/editors/code-file-templates.html
+(defun my/template/org-code-blocks ()
+    "function to insert code block template"
+    (interactive)
+    (insert "#+BEGIN_SRC \n"
+            "\n"
+	    "#+END_SRC\n")
+    (forward-line -3)
+    (forward-char 12))
+(global-set-key (kbd "C-c i code") 'my/template/org-code-blocks)
+
+(defun my/template/lcode ()
+(interactive)
+(insert "#+TITLE: "
+	(file-name-base (buffer-name))
+	"\n"
+	"#+PROPERTY: header-args :tangle \n"
+	"\n"
+	"* Description\n\n")
+(my/template/org-code-blocks)
+(insert "python")
+(forward-line -1)
+)
+(global-set-key (kbd "C-c i lcode") 'my/template/lcode )
