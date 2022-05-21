@@ -1,18 +1,16 @@
-(global-set-key (kbd "C-c e") 'org-babel-tangle)
-
 ;; initial startup settings
 (add-hook 'emacs-startup-hook 'toggle-frame-maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;; Keyboard-centric user interface
-  (setq inhibit-startup-message t)
-  (tool-bar-mode -1)
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (defalias 'yes-or-no-p 'y-or-n-p)
-
-;;(setq line-number-mode t)
-(global-linum-mode)
+(setq inhibit-startup-message t)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(defalias 'yes-or-no-p 'y-or-n-p)
 (setq ring-bell-function 'ignore)
+;;(setq line-number-mode t)
+
+(global-linum-mode)
 
 ;;https://zhangda.wordpress.com/2016/02/15/configurations-for-beautifying-emacs-org-mode/
 ;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
@@ -62,6 +60,8 @@
    ((t (:underline "#000000" :foreground "#555555" :background "#08080D" :extend t))))
  )
 
+(global-set-key (kbd "C-c e") 'org-babel-tangle)
+
 ;;https://zzamboni.org/post/beautifying-org-mode-in-emacs/
 (add-to-list 'load-path "~/.config/emacs/elisp/packages/org/org-bullets/")
 ;; https://github.com/integral-dw/org-bullets#faq--troubleshooting
@@ -71,7 +71,7 @@
 			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
   ;; use org-bullets-mode for utf8 symbols as org bullets
-  (require 'org-bullets)
+(require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
   ;; make available "org-bullet-face" such that I can control the font size individually
@@ -158,12 +158,6 @@
 ;; type C-s or C-r to cycle through search results
 (windmove-default-keybindings 'meta);;https://emacs.stackexchange.com/a/3460
 
-
-;;Keybindings
-;; (global-set-key (kbd "C-c /") 'uncomment-region)
-(global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c r") 'revert-buffer)
-(global-set-key (kbd "C-c t") 'org-babel-tangle)
 ;; dont keep autosave files "^#<files># after saving
 (setq delete-auto-save-files t)
 
@@ -187,3 +181,8 @@
 
 
 (setq org-edit-src-content-indentation 0)
+
+;; (global-set-key (kbd "C-c /") 'uncomment-region)
+(global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-c r") 'revert-buffer)
+(global-set-key (kbd "C-c t") 'org-babel-tangle)
