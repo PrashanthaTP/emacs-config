@@ -53,14 +53,15 @@
 ;; set scratch buffer mode to org
 ;; to test speeding up opening org files later
 (setq initial-major-mode 'org-mode)
+(setq org-startup-folded 'fold)
 (setq org-src-fontify-natively t)
 (custom-set-faces
  '(org-block-begin-line
-   ((t (:underline "#000000" :foreground "#555555" :background "#08080D" :extend t))))
+   ((t (:underline "#002F46" :foreground "#586E75" :background "#002F36" :extend t))))
  '(org-block
-   ((t (:background "#03030C" :extend t))))
+   ((t (:background "#002835" :extend t))))
  '(org-block-end-line
-   ((t (:underline "#000000" :foreground "#555555" :background "#08080D" :extend t))))
+   ((t (:underline "#002F46" :foreground "#586E75" :background "#002F36" :extend t))))
  )
 ;;https://stackoverflow.com/questions/11670654/how-to-resize-images-in-org-mode
 (setq org-image-actual-width nil)
@@ -85,20 +86,6 @@
 ;;
 ;; make available "org-bullet-face" such that I can control the font size individually
   ;;(setq org-bullets-face-name (quote org-bullet-face))
-
-;; initial startup settings
-(add-hook 'emacs-startup-hook 'toggle-frame-maximized)
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-;; Keyboard-centric user interface
-  (setq inhibit-startup-message t)
-  (tool-bar-mode -1)
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (defalias 'yes-or-no-p 'y-or-n-p)
-
-;;(setq line-number-mode t)
-(global-linum-mode)
-(setq ring-bell-function 'ignore)
 
 ;;(load (format "%s/%s" user-emacs-directory "minimal/packages_config"))
 ;;(Load (concat user-emacs-directory "minimal/packages_config"))
