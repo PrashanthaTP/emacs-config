@@ -1,5 +1,13 @@
-(global-set-key (kbd "C-c e") 'org-babel-tangle)
+#+TITLE: Emacs Configuration
+#+PROPERTY: header-args :tangle init.el
 
+#+BEGIN_SRC elisp
+(global-set-key (kbd "C-c e") 'org-babel-tangle)
+#+END_SRC
+
+* Startup settings
+  
+#+BEGIN_SRC elisp
 ;; initial startup settings
 (add-hook 'emacs-startup-hook 'toggle-frame-maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -13,6 +21,14 @@
 ;;(setq line-number-mode t)
 (global-linum-mode)
 (setq ring-bell-function 'ignore)
+#+END_SRC
+
+
+  
+
+* Org mode
+  
+#+BEGIN_SRC elisp
 
 (setq org-src-fontify-natively t)
 (custom-set-faces
@@ -23,7 +39,12 @@
  '(org-block-end-line
    ((t (:underline "#333333" :foreground "#008EDD" :background "#08080D" :extend t))))
  )
+#+END_SRC
 
+
+
+
+#+BEGIN_SRC elisp
 ;; initial startup settings
 (add-hook 'emacs-startup-hook 'toggle-frame-maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -131,3 +152,5 @@
 
 
 (setq org-edit-src-content-indentation 0)
+
+#+END_SRC
