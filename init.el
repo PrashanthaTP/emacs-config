@@ -14,15 +14,68 @@
 (global-linum-mode)
 (setq ring-bell-function 'ignore)
 
+;;https://zhangda.wordpress.com/2016/02/15/configurations-for-beautifying-emacs-org-mode/
+;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+(setq utf-translate-cjk-mode nil)
+
+(set-language-environment 'utf-8)
+(setq locale-coding-system 'utf-8)
+
+;; set the default encoding system
+(prefer-coding-system 'utf-8)
+(setq default-file-name-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+;; backwards compatibility as default-buffer-file-coding-system
+;; is deprecated in 23.2.
+(if (boundp buffer-file-coding-system)
+    (setq buffer-file-coding-system 'utf-8)
+  (setq default-buffer-file-coding-system 'utf-8))
+
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
+;; theme settings
+;;(load-theme 'wombat)
+;;https://sleeplessbeastie.eu/2014/06/09/how-to-use-solarized-theme-in-emacs/
+;;(add-to-list 'load-path "~/.config/emacs/elisp/packages/emacs-color-theme-solarized-master/")
+;;(setq custom-theme-load-path (add-to-list 'custom-theme-load-path "~/.config/emacs/elisp/packages/colors/emacs-color-theme-solarized-master"))
+(add-to-list 'custom-theme-load-path "~/.config/emacs/elisp/packages/colors/emacs-color-theme-solarized")
+;;(require 'color-theme)
+;;(require 'color-theme-solarized)
+;;(color-theme-initialize)
+;;(color-theme-solarized-dark)
+
+(set-frame-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
+;;(enable-theme 'solarized)
+;;(add-to-list 'default-frame-alist '(background-mode dark))
+
 (setq org-src-fontify-natively t)
 (custom-set-faces
  '(org-block-begin-line
-   ((t (:underline "#333333" :foreground "#008EDD" :background "#08080D" :extend t))))
+   ((t (:underline "#000000" :foreground "#555555" :background "#08080D" :extend t))))
  '(org-block
    ((t (:background "#03030C" :extend t))))
  '(org-block-end-line
-   ((t (:underline "#333333" :foreground "#008EDD" :background "#08080D" :extend t))))
+   ((t (:underline "#000000" :foreground "#555555" :background "#08080D" :extend t))))
  )
+
+;;https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+(add-to-list 'load-path "~/.config/emacs/elisp/packages/org/org-bullets/")
+  (font-lock-add-keywords 'org-mode
+			  '(("^ *\\([-]\\) "
+			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+  ;; use org-bullets-mode for utf8 symbols as org bullets
+  (require 'org-bullets)
+  ;; make available "org-bullet-face" such that I can control the font size individually
+  (setq org-bullets-face-name (quote org-bullet-face))
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  (setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "❍" "￮" "⊙" "⊚" "⊛" "∙" "∘"))
+;; make available "org-bullet-face" such that I can control the font size individually
+  ;;(setq org-bullets-face-name (quote org-bullet-face))
 
 ;; initial startup settings
 (add-hook 'emacs-startup-hook 'toggle-frame-maximized)
@@ -55,9 +108,8 @@
 ;; (set-frame-font
 ;;    "-outline-SauceCodePro NF-medium-normal-normal-mono-11-*-*-*-c-*-iso8859-1")
 ;; (set-face-attribute 'default (selected-frame) :height 200)
-(set-face-attribute 'default nil :height 150)
-;; theme settings
-(load-theme 'wombat)
+;;(set-face-attribute 'default nil :height 150)
+
 
 ;; emacs basics
 
