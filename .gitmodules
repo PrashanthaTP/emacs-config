@@ -1,0 +1,6 @@
+[submodule "elisp/packages/colors/emacs-color-theme-solarized"]
+	path = elisp/packages/colors/emacs-color-theme-solarized
+	url = git@github.com:sellout/emacs-color-theme-solarized.git
+[submodule "elisp/packages/org/org-bullets"]
+	path = elisp/packages/org/org-bullets
+	url = git@github.com:sabof/org-bullets.git
