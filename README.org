@@ -142,15 +142,19 @@
 ;;https://sleeplessbeastie.eu/2014/06/09/how-to-use-solarized-theme-in-emacs/
 ;;(add-to-list 'load-path "~/.config/emacs/elisp/packages/emacs-color-theme-solarized-master/")
 ;;(setq custom-theme-load-path (add-to-list 'custom-theme-load-path "~/.config/emacs/elisp/packages/colors/emacs-color-theme-solarized-master"))
-(add-to-list 'custom-theme-load-path "~/.config/emacs/elisp/packages/colors/emacs-color-theme-solarized")
+;;(add-to-list 'custom-theme-load-path "~/.config/emacs/elisp/packages/colors/emacs-color-theme-solarized")
+;;https://github.com/fniessen/emacs-leuven-theme
+(add-to-list 'custom-theme-load-path "~/.config/emacs/elisp/packages/colors/emacs-leuven-theme/lisp")
 ;;(require 'color-theme)
 ;;(require 'color-theme-solarized)
 ;;(color-theme-initialize)
 ;;(color-theme-solarized-dark)
-
+(setq org-fontify-whole-heading-line t)
 (set-frame-parameter nil 'background-mode 'dark)
-(load-theme 'solarized t)
+;;(load-theme 'solarized t)
+(load-theme 'leuven-dark t)
 ;;(enable-theme 'solarized)
+
 ;;(add-to-list 'default-frame-alist '(background-mode dark))
 #+END_SRC
 
@@ -165,14 +169,14 @@
 (setq initial-major-mode 'org-mode)
 (setq org-startup-folded t)
 (setq org-src-fontify-natively t)
-(custom-set-faces
- '(org-block-begin-line
-   ((t (:underline "#002F46" :foreground "#586E75" :background "#002F36" :extend t))))
- '(org-block
-   ((t (:background "#002835" :extend t))))
- '(org-block-end-line
-   ((t (:underline "#002F46" :foreground "#586E75" :background "#002F36" :extend t))))
- )
+;; (custom-set-faces
+;;  '(org-block-begin-line
+;;    ((t (:underline "#002F46" :foreground "#586E75" :background "#002F36" :extend t))))
+;;  '(org-block
+;;    ((t (:background "#002835" :extend t))))
+;;  '(org-block-end-line
+;;    ((t (:underline "#002F46" :foreground "#586E75" :background "#002F36" :extend t))))
+;;  )
 ;;https://stackoverflow.com/questions/11670654/how-to-resize-images-in-org-mode
 (setq org-image-actual-width nil)
 
