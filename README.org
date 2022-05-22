@@ -208,6 +208,19 @@
 
 #+END_SRC
 
+** Diary Setup
+
+#+BEGIN_SRC elisp
+;; diary file : default : user-emacs-directory/diary
+(setq diary-file "D:/Studies/diary")
+;;https://www.gnu.org/software/emacs/manual/html_node/emacs/Date-Formats.html
+;;(setq calendar-date-style 'iso)
+(require 'calendar)
+(calendar-set-date-style 'european);;day/month/year
+(setq org-agenda-include-diary t)
+(setq org-agenda-files `("D:/Studies/agenda"))
+#+END_SRC
+
 
 
 

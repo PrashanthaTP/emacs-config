@@ -167,6 +167,15 @@
 ;; make available "org-bullet-face" such that I can control the font size individually
   ;;(setq org-bullets-face-name (quote org-bullet-face))
 
+;; diary file : default : user-emacs-directory/diary
+(setq diary-file "D:/Studies/diary")
+;;https://www.gnu.org/software/emacs/manual/html_node/emacs/Date-Formats.html
+;;(setq calendar-date-style 'iso)
+(require 'calendar)
+(calendar-set-date-style 'european);;day/month/year
+(setq org-agenda-include-diary t)
+(setq org-agenda-files `("D:/Studies/agenda"))
+
 ;;(load (format "%s/%s" user-emacs-directory "minimal/packages_config"))
 ;;(Load (concat user-emacs-directory "minimal/packages_config"))
 ;;(load (expand-file-name (concat user-emacs-directory "packages_config.el")))
