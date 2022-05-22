@@ -4,3 +4,6 @@
 [submodule "elisp/packages/org/org-bullets"]
 	path = elisp/packages/org/org-bullets
 	url = git@github.com:sabof/org-bullets.git
+[submodule ".\\elisp\\packages\\colors\\emacs-leuven-theme"]
+	path = .\\elisp\\packages\\colors\\emacs-leuven-theme
+	url = git@github.com:fniessen/emacs-leuven-theme.git
