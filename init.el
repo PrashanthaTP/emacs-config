@@ -110,6 +110,11 @@
 
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+(set-frame-font "SauceCodePro NF 12" nil t)
+;; https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/
+(set-face-attribute 'default nil :font "SauceCodePro NF-12")
+(set-face-attribute 'fixed-pitch nil :font "SauceCodePro NF-12")
+(set-face-attribute 'variable-pitch nil :font "Fira Code-12")
 
 ;; theme settings
 ;;(load-theme 'wombat)
@@ -126,16 +131,22 @@
 (setq org-fontify-whole-heading-line t)
 (set-frame-parameter nil 'background-mode 'dark)
 ;;(load-theme 'solarized t)
-(load-theme 'leuven-dark t)
+;;(load-theme 'leuven-dark t)
+(load-theme 'modus-vivendi)
 ;;(enable-theme 'solarized)
 
 ;;(add-to-list 'default-frame-alist '(background-mode dark))
+
+(custom-theme-set-faces
+   'user
+   '(org-block ((t (:inherit fixed-pitch)))))
 
 ;; set scratch buffer mode to org
 ;; to test speeding up opening org files later
 (setq initial-major-mode 'org-mode)
 (setq org-startup-folded t)
 (setq org-src-fontify-natively t)
+(add-hook 'org-mode-hook 'variable-pitch-mode)
 ;; (custom-set-faces
 ;;  '(org-block-begin-line
 ;;    ((t (:underline "#002F46" :foreground "#586E75" :background "#002F36" :extend t))))
@@ -191,7 +202,7 @@
 ;;(add-to-list 'default-frame-alist '(font . "Source Code Pro"))
 ;;(set-face-attribute 'default t :font "Source Code Pro")
 ;;(set-face-attribute 'default t :font "Source Code Pro")
-(set-frame-font "SauceCodePro NF 12" nil t)
+;;(set-frame-font "SauceCodePro NF 12" nil t)
 ;;  (set-face-attribute
   ;;  'default (selected-frame) :font
     ;;"-outline-SauceCodePro NF-medium-normal-normal-mono-11-*-*-*-c-*-iso8859-1")
