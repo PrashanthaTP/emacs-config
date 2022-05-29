@@ -176,6 +176,11 @@
 (setq org-agenda-include-diary t)
 (setq org-agenda-files `("D:/Studies/agenda"))
 
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '((python . t)))
+;;  (add-to-list 'org-babel-load-languages `(python . t))
+
 ;;(load (format "%s/%s" user-emacs-directory "minimal/packages_config"))
 ;;(Load (concat user-emacs-directory "minimal/packages_config"))
 ;;(load (expand-file-name (concat user-emacs-directory "packages_config.el")))

@@ -221,6 +221,14 @@
 (setq org-agenda-files `("D:/Studies/agenda"))
 #+END_SRC
 
+- Languages
+
+#+BEGIN_SRC elisp
+  (org-babel-do-load-languages
+  'org-babel-load-languages
+  '((python . t)))
+;;  (add-to-list 'org-babel-load-languages `(python . t))
+#+END_SRC
 
 
 
