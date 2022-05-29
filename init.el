@@ -15,6 +15,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
+(global-hl-line-mode);;highlight current line in all buffers
 ;;Fido mode setup
 ;;http://xahlee.info/emacs/emacs/emacs_icomplete_mode.html
 (if (version< emacs-version "28.1")
