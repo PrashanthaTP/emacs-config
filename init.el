@@ -280,6 +280,8 @@
 
 (setq org-edit-src-content-indentation 0)
 
+;;https://www.gnu.org/software/emacs/manual/html_node/emacs/Windows-Keyboard.html
+(setq w32-recognize-altgr nil)
 ;; (global-set-key (kbd "C-c /") 'uncomment-region)
 (global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c r") 'revert-buffer)
