@@ -7,3 +7,6 @@
 [submodule ".\\elisp\\packages\\colors\\emacs-leuven-theme"]
 	path = .\\elisp\\packages\\colors\\emacs-leuven-theme
 	url = git@github.com:fniessen/emacs-leuven-theme.git
+[submodule "elisp/packages/company-mode"]
+	path = elisp/packages/company-mode
+	url = git@github.com:company-mode/company-mode.git

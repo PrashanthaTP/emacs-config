@@ -348,3 +348,7 @@
        (setq indent-tabs-mode nil)
        (setq tab-width 4)
        (setq python-indent-offset 4)))
+
+(add-to-list 'load-path "~/.config/emacs/elisp/packages/company-mode/")
+(load "company")
+(add-hook 'after-init-hook 'global-company-mode)
