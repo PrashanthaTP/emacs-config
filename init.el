@@ -143,6 +143,7 @@
 
 ;; set scratch buffer mode to org
 ;; to test speeding up opening org files later
+(require 'org-tempo) ;; to use <s to insert code blocks
 (setq initial-major-mode 'org-mode)
 (setq org-startup-folded t)
 (setq org-src-fontify-natively t)
@@ -341,3 +342,9 @@
 (forward-line -1)
 )
 (global-set-key (kbd "C-c i lcode") 'my/template/lcode )
+
+(add-hook 'python-mode-hook
+     (lambda ()
+       (setq indent-tabs-mode nil)
+       (setq tab-width 4)
+       (setq python-indent-offset 4)))
